@@ -17,6 +17,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Scaffold
@@ -46,7 +47,7 @@ class MainActivity : ComponentActivity() {
             ExercisesTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Profile(
-                        name = "Android",
+                        name = "Steve Bobby",
                         modifier = Modifier.padding(innerPadding)
                     )
                 }
@@ -58,8 +59,8 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun Profile(name: String, modifier: Modifier = Modifier) {
     Column(
-        Modifier.fillMaxSize(),
-        verticalArrangement = Arrangement.spacedBy(10.dp)
+        modifier = modifier.padding(10.dp).fillMaxSize(),
+        verticalArrangement = Arrangement.spacedBy(20.dp)
     ){
         Column(
             verticalArrangement = Arrangement.spacedBy(5.dp),
@@ -77,12 +78,12 @@ fun Profile(name: String, modifier: Modifier = Modifier) {
                 modifier = Modifier
                     .clip(CircleShape)
                     .size(200.dp)
-                    .border(1.dp, Color.Blue, CircleShape)
+                    .border(2.dp, Color.Blue, CircleShape)
             )
             var addFriend by remember { mutableStateOf(true) }
             var addToGroup by remember { mutableStateOf(true) }
             Row(
-                Modifier.height(75.dp),
+                Modifier.height(65.dp),
             ) {
                 Button(
                     onClick = { addFriend = !addFriend; },
@@ -94,7 +95,7 @@ fun Profile(name: String, modifier: Modifier = Modifier) {
                 ) {
                     Text(
                         text = if (addFriend) "Add Friend" else "Remove Friend",
-                        fontSize = 18.sp,
+                        fontSize = 20.sp,
                         textAlign = TextAlign.Center
                     )
                 }
@@ -108,29 +109,50 @@ fun Profile(name: String, modifier: Modifier = Modifier) {
                 ) {
                     Text(
                         text = if (addToGroup) "Add to WeShare group" else "Remove from WeShare group",
-                        fontSize = 18.sp,
+                        fontSize = 20.sp,
                         textAlign = TextAlign.Center
                     )
                 }
             }
         }
-        InfoBox("Odense", "Single")
+        InfoBox("Odense", "Single", "01-01-1952", "Netto")
     }
 
 
 }
 
 @Composable
-fun InfoBox(city: String, relationStatus: String) {
+fun InfoBox(city: String, relationStatus: String, birthday: String, job: String) {
     Column(
         Modifier
-            .padding(10.dp)
-            .background(Color.Gray)
+            .clip(RoundedCornerShape(20.dp))
+            .background(Color.LightGray)
             .fillMaxWidth()
-            .padding(10.dp),
+            .padding(15.dp),
+        verticalArrangement = Arrangement.spacedBy(20.dp)
     ) {
-        Text("City: $city")
-        Text("Relationship Status: $relationStatus")
+        Column(verticalArrangement = Arrangement.spacedBy(10.dp)){
+            Text("Personal Information", fontSize = 30.sp, fontWeight = FontWeight.Bold)
+            Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween){
+                Text("City: ", fontWeight = FontWeight.Bold, fontSize = 25.sp)
+                Text(city, fontSize = 25.sp)
+            }
+            Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween){
+                Text("Birthday: ", fontWeight = FontWeight.Bold, fontSize = 25.sp)
+                Text(birthday, fontSize = 25.sp)
+            }
+            Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween){
+                Text("Relationship Status: ", fontWeight = FontWeight.Bold, fontSize = 25.sp)
+                Text(relationStatus, fontSize = 25.sp)
+            }
+        }
+        Column(verticalArrangement = Arrangement.spacedBy(10.dp)){
+            Text("Work", fontSize = 30.sp, fontWeight = FontWeight.Bold)
+            Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween){
+                Text("Workplace: ", fontWeight = FontWeight.Bold, fontSize = 25.sp)
+                Text(job, fontSize = 25.sp)
+            }
+        }
     }
 }
 
