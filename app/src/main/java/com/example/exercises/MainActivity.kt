@@ -1,7 +1,6 @@
 package com.example.exercises
 
 import android.os.Bundle
-import android.widget.GridLayout
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -34,7 +33,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.exercises.ui.theme.ExercisesTheme
-
+import androidx.lifecycle.viewmodel.compose.viewModel
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,14 +51,14 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Group(modifier: Modifier = Modifier) {
+fun Group(modifier: Modifier = Modifier, vm: MemberViewModel = viewModel()) {
     Column(
         modifier = modifier
             .fillMaxSize()
             .padding(10.dp),
-        verticalArrangement = Arrangement.spacedBy(10.dp)
+        verticalArrangement = Arrangement.spacedBy(15.dp)
     ) {
-        val members = rememberSaveable { mutableStateListOf<String>() }
+        //val members = rememberSaveable { mutableStateListOf<String>() }
         var query by rememberSaveable { mutableStateOf("") }
         Row(
             Modifier
@@ -70,24 +69,25 @@ fun Group(modifier: Modifier = Modifier) {
             TextField(
                 value = query,
                 onValueChange = {query = it},
+                label = { Text("Name") },
                 modifier = Modifier.fillMaxHeight()
             )
             Button(
-                onClick = { members.add(query); query = "" },
+                //onClick = { members.add(query); query = "" },
+                onClick = { vm.addMember(query) },
                 modifier = Modifier.fillMaxHeight()
             ) {
                 Text("Add")
             }
         }
-        Members(members = members, onRemove = { member -> members.removeAt(member) })
+        //Members(members = members, onRemove = { member -> members.removeAt(member) })
+        Members(members = vm.members, onRemove = { member -> vm.removeMember(member) })
     }
 }
 
 @Composable
 fun Members(members: List<String>, onRemove: (Int) -> Unit){
     Column(
-        Modifier
-            .padding(5.dp),
         verticalArrangement = Arrangement.spacedBy(10.dp)
     ) {
         members.forEach { member ->
