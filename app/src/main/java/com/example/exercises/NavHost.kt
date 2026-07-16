@@ -7,6 +7,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.exercises.pages.Cars
 import com.example.exercises.pages.Group
 import com.example.exercises.pages.HomePage
 import com.example.exercises.pages.Profile
@@ -23,7 +24,8 @@ fun AppNavigation(modifier: Modifier = Modifier, navController: NavHostControlle
         composable(Routes.START) {
             HomePage(
                 onGroupPress = { navController.navigate(Routes.GROUP) },
-                onSoMePress = { navController.navigate(Routes.SOME) }
+                onSoMePress = { navController.navigate(Routes.SOME) },
+                onCarsPress = { navController.navigate(Routes.CARS) }
             )
         }
 
@@ -36,6 +38,12 @@ fun AppNavigation(modifier: Modifier = Modifier, navController: NavHostControlle
         composable(Routes.SOME){
             Profile(
                 name = "Steve Bobby",
+                onBackPress = { navController.popBackStack() }
+            )
+        }
+
+        composable(Routes.CARS){
+            Cars(
                 onBackPress = { navController.popBackStack() }
             )
         }

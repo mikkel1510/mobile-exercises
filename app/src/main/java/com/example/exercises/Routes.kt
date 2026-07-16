@@ -4,4 +4,5 @@ object Routes {
     const val START = "start"
     const val GROUP = "group"
     const val SOME = "some"
+    const val CARS = "cars"
 }

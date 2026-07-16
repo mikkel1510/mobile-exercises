@@ -17,7 +17,8 @@ import androidx.compose.ui.tooling.preview.Preview
 fun HomePage(
     modifier: Modifier = Modifier,
     onGroupPress: () -> Unit,
-    onSoMePress: () -> Unit
+    onSoMePress: () -> Unit,
+    onCarsPress: () -> Unit
 ){
     Scaffold(
         topBar = {
@@ -33,6 +34,9 @@ fun HomePage(
             Button(onClick = onGroupPress) {
                 Text("Lec 2: Group Members Page")
             }
+            Button(onClick = onCarsPress) {
+                Text("Lec 3: REST API")
+            }
         }
     }
 }
@@ -40,5 +44,5 @@ fun HomePage(
 @Preview
 @Composable
 fun HomePreview(){
-    HomePage(onGroupPress = {}, onSoMePress = {})
+    HomePage(onGroupPress = {}, onSoMePress = {}, onCarsPress = {})
 }
