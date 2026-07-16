@@ -1,9 +1,7 @@
-package com.example.exercises
+package com.example.exercises.viewmodels
 
 import androidx.compose.runtime.mutableStateListOf
 import androidx.lifecycle.ViewModel
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
 
 class MemberViewModel() : ViewModel(){
     private val _members = mutableStateListOf<String>()

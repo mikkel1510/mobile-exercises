@@ -1,9 +1,5 @@
-package com.example.exercises
+package com.example.exercises.pages
 
-import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -14,11 +10,17 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf
@@ -34,38 +36,60 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.exercises.ui.theme.ExercisesTheme
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.exercises.viewmodels.MemberViewModel
+
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun Group(modifier: Modifier = Modifier, vm: MemberViewModel = viewModel()) {
-    Column(
-        modifier = modifier
-            .fillMaxSize()
-            .padding(10.dp),
-        verticalArrangement = Arrangement.spacedBy(15.dp)
-    ) {
-        //val members = rememberSaveable { mutableStateListOf<String>() }
-        var query by rememberSaveable { mutableStateOf("") }
-        Row(
-            Modifier
-                .height(50.dp)
-                .fillMaxWidth(),
-            horizontalArrangement = Arrangement.spacedBy(5.dp)
-        ) {
-            TextField(
-                value = query,
-                onValueChange = {query = it},
-                label = { Text("Name") },
-                modifier = Modifier.fillMaxHeight()
+fun Group(modifier: Modifier = Modifier, vm: MemberViewModel = viewModel(), onBackPress: () -> Unit) {
+    Scaffold(
+        modifier = Modifier.fillMaxSize(),
+        topBar = {
+            TopAppBar(
+                title = {
+                    Text("Group Members")
+                },
+                navigationIcon = {
+                    IconButton(onClick = { onBackPress() }) {
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                            contentDescription = "Back"
+                        )
+                    }
+                }
             )
-            Button(
-                //onClick = { members.add(query); query = "" },
-                onClick = { vm.addMember(query) },
-                modifier = Modifier.fillMaxHeight()
-            ) {
-                Text("Add")
-            }
         }
-        //Members(members = members, onRemove = { member -> members.removeAt(member) })
-        Members(members = vm.members, onRemove = { member -> vm.removeMember(member) })
+    ) { innerPadding ->
+        Column(
+            modifier = modifier
+                .padding(innerPadding)
+                .fillMaxSize(),
+            verticalArrangement = Arrangement.spacedBy(15.dp)
+        ) {
+            //val members = rememberSaveable { mutableStateListOf<String>() }
+            var query by rememberSaveable { mutableStateOf("") }
+            Row(
+                Modifier
+                    .height(50.dp)
+                    .fillMaxWidth(),
+                horizontalArrangement = Arrangement.spacedBy(5.dp)
+            ) {
+                TextField(
+                    value = query,
+                    onValueChange = { query = it },
+                    label = { Text("Name") },
+                    modifier = Modifier.fillMaxHeight()
+                )
+                Button(
+                    //onClick = { members.add(query); query = "" },
+                    onClick = { vm.addMember(query) },
+                    modifier = Modifier.fillMaxHeight()
+                ) {
+                    Text("Add")
+                }
+            }
+            //Members(members = members, onRemove = { member -> members.removeAt(member) })
+            Members(members = vm.members, onRemove = { member -> vm.removeMember(member) })
+        }
     }
 }
 
@@ -98,7 +122,7 @@ fun Members(members: List<String>, onRemove: (Int) -> Unit){
 @Composable
 fun GroupPreview() {
     ExercisesTheme {
-        Group()
+        Group(onBackPress = {})
     }
 }
 
