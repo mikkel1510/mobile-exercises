@@ -21,6 +21,7 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
@@ -42,6 +43,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.exercises.R
 import com.example.exercises.ui.theme.ExercisesTheme
+import com.example.exercises.ui.theme.MyButton
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -51,7 +53,9 @@ fun Profile(name: String, modifier: Modifier = Modifier, onBackPress: () -> Unit
         topBar = {
             TopAppBar(
                 title = {
-                    Text("$name's Profile")
+                    Text(
+                        text = "$name's Profile",
+                        style = MaterialTheme.typography.titleSmall)
                 },
                 navigationIcon = {
                     IconButton(onClick = { onBackPress() }) {
@@ -67,7 +71,8 @@ fun Profile(name: String, modifier: Modifier = Modifier, onBackPress: () -> Unit
         Column(
             modifier = modifier
                 .padding(innerPadding)
-                .fillMaxSize(),
+                .fillMaxSize()
+                .padding(12.dp),
             verticalArrangement = Arrangement.spacedBy(20.dp)
         ) {
             Column(
@@ -76,8 +81,7 @@ fun Profile(name: String, modifier: Modifier = Modifier, onBackPress: () -> Unit
             ) {
                 Text(
                     text = name,
-                    fontSize = 30.sp,
-                    fontWeight = FontWeight.Bold
+                    style = MaterialTheme.typography.titleLarge
                 )
                 Image(
                     painter = painterResource(id = R.drawable.fella),
@@ -86,7 +90,7 @@ fun Profile(name: String, modifier: Modifier = Modifier, onBackPress: () -> Unit
                     modifier = Modifier
                         .clip(CircleShape)
                         .size(200.dp)
-                        .border(2.dp, Color.Blue, CircleShape)
+                        .border(2.dp, MaterialTheme.colorScheme.primary, CircleShape)
                 )
                 var addFriend by remember { mutableStateOf(true) }
                 var addToGroup by remember { mutableStateOf(true) }
@@ -105,8 +109,8 @@ fun Profile(name: String, modifier: Modifier = Modifier, onBackPress: () -> Unit
                     ) {
                         Text(
                             text = if (addFriend) "Add Friend" else "Remove Friend",
-                            fontSize = 20.sp,
-                            textAlign = TextAlign.Center
+                            textAlign = TextAlign.Center,
+                            style = MaterialTheme.typography.labelMedium
                         )
                     }
                     Button(
@@ -121,8 +125,9 @@ fun Profile(name: String, modifier: Modifier = Modifier, onBackPress: () -> Unit
                     ) {
                         Text(
                             text = if (addToGroup) "Add to WeShare group" else "Remove from WeShare group",
-                            fontSize = 20.sp,
-                            textAlign = TextAlign.Center
+                            textAlign = TextAlign.Center,
+                            fontSize = 16.sp,
+                            style = MaterialTheme.typography.labelMedium
                         )
                     }
                 }
@@ -137,31 +142,65 @@ fun InfoBox(city: String, relationStatus: String, birthday: String, job: String)
     Column(
         Modifier
             .clip(RoundedCornerShape(20.dp))
-            .background(Color.LightGray)
+            .background(MaterialTheme.colorScheme.secondary)
             .fillMaxWidth()
             .padding(15.dp),
         verticalArrangement = Arrangement.spacedBy(20.dp)
     ) {
         Column(verticalArrangement = Arrangement.spacedBy(10.dp)){
-            Text("Personal Information", fontSize = 30.sp, fontWeight = FontWeight.Bold)
+            Text(
+                text = "Personal Information",
+                style = MaterialTheme.typography.titleMedium
+            )
             Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween){
-                Text("City: ", fontWeight = FontWeight.Bold, fontSize = 25.sp)
-                Text(city, fontSize = 25.sp)
+                Text(
+                    text = "City: ",
+                    fontWeight = FontWeight.Bold,
+                    style = MaterialTheme.typography.bodyLarge
+                )
+                Text(
+                    text = city,
+                    style = MaterialTheme.typography.bodyLarge
+                )
             }
             Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween){
-                Text("Birthday: ", fontWeight = FontWeight.Bold, fontSize = 25.sp)
-                Text(birthday, fontSize = 25.sp)
+                Text(
+                    text = "Birthday: ",
+                    fontWeight = FontWeight.Bold,
+                    style = MaterialTheme.typography.bodyLarge
+                )
+                Text(
+                    text = birthday,
+                    style = MaterialTheme.typography.bodyLarge
+                )
             }
             Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween){
-                Text("Relationship Status: ", fontWeight = FontWeight.Bold, fontSize = 25.sp)
-                Text(relationStatus, fontSize = 25.sp)
+                Text(
+                    text = "Relationship Status: ",
+                    fontWeight = FontWeight.Bold,
+                    style = MaterialTheme.typography.bodyLarge
+                )
+                Text(
+                    text = relationStatus,
+                    style = MaterialTheme.typography.bodyLarge
+                )
             }
         }
         Column(verticalArrangement = Arrangement.spacedBy(10.dp)){
-            Text("Work", fontSize = 30.sp, fontWeight = FontWeight.Bold)
+            Text(
+                text = "Work",
+                style = MaterialTheme.typography.titleMedium
+            )
             Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween){
-                Text("Workplace: ", fontWeight = FontWeight.Bold, fontSize = 25.sp)
-                Text(job, fontSize = 25.sp)
+                Text(
+                    text = "Workplace: ",
+                    fontWeight = FontWeight.Bold,
+                    style = MaterialTheme.typography.bodyLarge
+                )
+                Text(
+                    text = job,
+                    style = MaterialTheme.typography.bodyLarge
+                )
             }
         }
     }
