@@ -26,7 +26,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.Outline
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -59,7 +58,10 @@ fun Cars(onBackPress: () -> Unit, carVM: CarViewModel = viewModel()){
         }
     ) { innerPadding ->
         Column(
-            Modifier.padding(innerPadding),
+            Modifier
+                .padding(innerPadding)
+                .fillMaxSize()
+                .padding(12.dp),
         ) {
             val isLoading by carVM.isLoading.collectAsStateWithLifecycle()
 
@@ -114,7 +116,7 @@ fun Car(car: Car){
 
 @Preview
 @Composable
-fun CarsPreview() {
+fun CarsPreview(carVM: CarViewModel = viewModel()) {
     val previewCars = listOf(
         Car(id = 1, brand = "Mercedes-Benz", model = "Citan", bodyType = "Van", color = "Red", price = 10000, year = 2010),
         Car(id = 2, brand = "Lexus", model = "GX", bodyType = "4WD", color = "Black", price = 50000, year = 2020),
@@ -122,7 +124,6 @@ fun CarsPreview() {
         Car(id = 4, brand = "Hyundai", model = "Grand i10 Nios", bodyType = "Hatchback", color = "Yellow", price = 30000, year = 2018),
         Car(id = 5, brand = "Honda", model = "Civic", bodyType = "Sedan", color = "Blue", price = 25000, year = 2010)
     )
-    val carVM = CarViewModel()
     carVM.cars.addAll(previewCars)
     carVM.isLoading.value = false
 

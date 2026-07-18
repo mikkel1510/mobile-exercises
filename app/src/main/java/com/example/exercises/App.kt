@@ -11,5 +11,5 @@ import androidx.navigation.compose.rememberNavController
 @Composable
 fun App() {
     val navController = rememberNavController()
-    AppNavigation(Modifier.padding(12.dp), navController = navController)
+    AppNavigation(navController = navController)
 }
