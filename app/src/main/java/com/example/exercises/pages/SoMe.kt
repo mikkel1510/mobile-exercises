@@ -43,7 +43,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.exercises.R
 import com.example.exercises.ui.theme.ExercisesTheme
-import com.example.exercises.ui.theme.MyButton
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
