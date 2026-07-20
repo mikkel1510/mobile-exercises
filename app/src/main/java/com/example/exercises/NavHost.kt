@@ -2,11 +2,10 @@ package com.example.exercises
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.navigation.NavController
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import androidx.navigation.compose.rememberNavController
 import com.example.exercises.pages.Cars
 import com.example.exercises.pages.Group
 import com.example.exercises.pages.HomePage
@@ -17,13 +16,13 @@ import com.example.exercises.viewmodels.AuthViewModel
 @Composable
 fun AppNavigation(modifier: Modifier = Modifier, navController: NavHostController){
 
+    val authVM: AuthViewModel = viewModel()
 
     NavHost(
         navController = navController,
         startDestination = Routes.START,
         modifier = modifier
     ){
-        val authVM = AuthViewModel()
 
         composable(Routes.START) {
             HomePage(

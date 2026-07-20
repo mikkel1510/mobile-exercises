@@ -18,6 +18,8 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -39,7 +41,7 @@ fun HomePage(
     onSoMePress: () -> Unit,
     onCarsPress: () -> Unit,
     onLoginPress: () -> Unit,
-    authVM: AuthViewModel = viewModel()
+    authVM: AuthViewModel
 ){
     Scaffold(
         topBar = {
@@ -65,8 +67,9 @@ fun HomePage(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Row{
+                    val currentUser by authVM.currentUser.collectAsState()
                     Text("Hello ")
-                    Text(authVM.currentUser.value.ifEmpty { "stranger" }, fontWeight = FontWeight.Bold)
+                    Text(currentUser.ifEmpty { "stranger" }, fontWeight = FontWeight.Bold)
                 }
                 MyButton("Edit Name", { onLoginPress() })
             }
@@ -91,6 +94,6 @@ fun HomePage(
 @Composable
 fun HomePreview(){
     ExercisesTheme{
-        HomePage(onGroupPress = {}, onSoMePress = {}, onCarsPress = {}, onLoginPress = {})
+        HomePage(onGroupPress = {}, onSoMePress = {}, onCarsPress = {}, onLoginPress = {}, authVM = viewModel())
     }
 }

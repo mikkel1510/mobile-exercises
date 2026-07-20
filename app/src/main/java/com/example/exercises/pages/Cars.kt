@@ -10,6 +10,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
@@ -33,6 +35,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
+import coil3.compose.AsyncImage
 import com.example.exercises.R
 import com.example.exercises.RestAPI.CarService.Car
 import com.example.exercises.viewmodels.CarViewModel
@@ -75,11 +78,11 @@ fun Cars(onBackPress: () -> Unit, carVM: CarViewModel = viewModel()){
                             .align(Alignment.Center))
                 }
             } else {
-                Column(
+                LazyColumn(
                     Modifier.padding(10.dp),
                     verticalArrangement = Arrangement.spacedBy(15.dp)
                 ) {
-                    carVM.cars.forEach { car ->
+                    items(carVM.cars) { car ->
                         Car(car)
                     }
                 }
@@ -99,12 +102,12 @@ fun Car(car: Car){
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Image(
-            painter = painterResource(id = R.drawable.car),
-            contentDescription = "Car",
-            contentScale = ContentScale.Crop,
+        AsyncImage(
+            model = car.imageURL,
+            contentDescription = "Car image",
+            contentScale = ContentScale.Fit,
             modifier = Modifier
-                .size(100.dp)
+                .size(130.dp)
         )
         Column(horizontalAlignment = Alignment.End, verticalArrangement = Arrangement.spacedBy(5.dp)) {
             Text(car.brand, fontSize = 24.sp)
@@ -118,11 +121,11 @@ fun Car(car: Car){
 @Composable
 fun CarsPreview(carVM: CarViewModel = viewModel()) {
     val previewCars = listOf(
-        Car(id = 1, brand = "Mercedes-Benz", model = "Citan", bodyType = "Van", color = "Red", price = 10000, year = 2010),
-        Car(id = 2, brand = "Lexus", model = "GX", bodyType = "4WD", color = "Black", price = 50000, year = 2020),
-        Car(id = 3, brand = "Toyota", model = "RAV4", bodyType = "Crossover", color = "Gray", price = 15000, year = 2015),
-        Car(id = 4, brand = "Hyundai", model = "Grand i10 Nios", bodyType = "Hatchback", color = "Yellow", price = 30000, year = 2018),
-        Car(id = 5, brand = "Honda", model = "Civic", bodyType = "Sedan", color = "Blue", price = 25000, year = 2010)
+        Car(id = 1, brand = "Mercedes-Benz", model = "Citan", bodyType = "Van", color = "Red", price = 10000, year = 2010, imageURL = ""),
+        Car(id = 2, brand = "Lexus", model = "GX", bodyType = "4WD", color = "Black", price = 50000, year = 2020, imageURL = ""),
+        Car(id = 3, brand = "Toyota", model = "RAV4", bodyType = "Crossover", color = "Gray", price = 15000, year = 2015, imageURL = ""),
+        Car(id = 4, brand = "Hyundai", model = "Grand i10 Nios", bodyType = "Hatchback", color = "Yellow", price = 30000, year = 2018, imageURL = ""),
+        Car(id = 5, brand = "Honda", model = "Civic", bodyType = "Sedan", color = "Blue", price = 25000, year = 2010, imageURL = "")
     )
     carVM.cars.addAll(previewCars)
     carVM.isLoading.value = false
