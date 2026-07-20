@@ -6,7 +6,8 @@
     "bodyType": "Van",
     "color": "Red",
     "price": 10000,
-    "year": 2010
+    "year": 2010,
+    "imageURL": "https://rk.mb-qr.com/media/thumbnails/cards/Front_ptFhbfR.png.1000x514_q95_width-1000_9dbLMrd.png.1000x1000_q95.png"
   },
   {
     "id": 2,
@@ -15,7 +16,8 @@
     "bodyType": "4WD",
     "color": "Black",
     "price": 50000,
-    "year": 2020
+    "year": 2020,
+    "imageURL": "https://www.earnhardtlexus.com/static/brand-lexus/gx/2022/images/2022-lexus-gx-460-transparent.png"
   },
   {
     "id": 3,
@@ -24,7 +26,8 @@
     "bodyType": "Crossover",
     "color": "Gray",
     "price": 15000,
-    "year": 2015
+    "year": 2015,
+    "imageURL": "https://pluspng.com/img-png/toyota-rav4-png-2016-toyota-rav4-hybrid-2048.png"
   },
   {
     "id": 4,
@@ -33,7 +36,8 @@
     "bodyType": "Hatchback",
     "color": "Yellow",
     "price": 30000,
-    "year": 2018
+    "year": 2018,
+    "imageURL": "https://ackodrive-prod.ackoassets.com/image/hyundai/grand-i10-nios/typhoon-silver/default/Transparent.png"
   },
   {
     "id": 5,
@@ -42,6 +46,57 @@
     "bodyType": "Sedan",
     "color": "Blue",
     "price": 25000,
-    "year": 2010
+    "year": 2010,
+    "imageURL": "https://freepngimg.com/save/32503-honda-civic-photo/1675x1001"
+  },
+  {
+    "id": 6,
+    "brand": "Volkswagen",
+    "model": "Golf",
+    "bodyType": "Hatchback",
+    "color": "White",
+    "price": 22000,
+    "year": 2017,
+    "imageURL": "https://www.pngkey.com/png/full/386-3864888_volkswagen-golf.png"
+  },
+  {
+    "id": 7,
+    "brand": "BMW",
+    "model": "X5",
+    "bodyType": "SUV",
+    "color": "Black",
+    "price": 65000,
+    "year": 2021,
+    "imageURL": "https://freepngimg.com/save/22421-bmw-x5-transparent-image/800x531"
+  },
+  {
+    "id": 8,
+    "brand": "Ford",
+    "model": "Mustang",
+    "bodyType": "Coupe",
+    "color": "Red",
+    "price": 55000,
+    "year": 2019,
+    "imageURL": "https://pngimg.com/uploads/mustang/mustang_PNG15.png"
+  },
+  {
+    "id": 9,
+    "brand": "Volvo",
+    "model": "V60",
+    "bodyType": "Station Wagon",
+    "color": "Silver",
+    "price": 40000,
+    "year": 2020,
+    "imageURL": "https://d147al5y0i1rb.cloudfront.net/uploads/leasing/offer/image/15546/volvo-v60-inscription_GoMore_1610705849.png?ixlib=rails-4.3.1&auto=format%2Ccompress&fit=clip&h=380&w=670"
+  },
+  {
+    "id": 10,
+    "brand": "Tesla",
+    "model": "Model 3",
+    "bodyType": "Sedan",
+    "color": "White",
+    "price": 45000,
+    "year": 2022,
+    "imageURL": "https://www.nicepng.com/png/full/77-778891_model-s-tesla-model-3-png.png"
   }
 ]

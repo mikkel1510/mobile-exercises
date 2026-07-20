@@ -12,7 +12,8 @@ interface CarService {
         val bodyType: String,
         val color: String,
         val price: Int,
-        val year: Int
+        val year: Int,
+        val imageURL: String
     )
 
     @GET("cars/{id}")
