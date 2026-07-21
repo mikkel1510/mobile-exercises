@@ -10,7 +10,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -37,7 +36,7 @@ import com.example.exercises.ui.theme.ExercisesTheme
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.exercises.ui.theme.MyButton
 import com.example.exercises.ui.theme.MyTextField
-import com.example.exercises.viewmodels.MemberViewModel
+import com.example.exercises.data.viewmodels.MemberViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

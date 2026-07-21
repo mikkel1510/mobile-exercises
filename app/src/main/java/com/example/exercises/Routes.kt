@@ -6,4 +6,5 @@ object Routes {
     const val SOME = "some"
     const val CARS = "cars"
     const val LOGIN = "login"
+    const val NOTES = "notes"
 }

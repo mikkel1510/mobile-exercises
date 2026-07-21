@@ -19,7 +19,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
@@ -29,7 +28,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.exercises.ui.theme.ExercisesTheme
 import com.example.exercises.ui.theme.MyButton
 import com.example.exercises.ui.theme.MyTextField
-import com.example.exercises.viewmodels.AuthViewModel
+import com.example.exercises.data.viewmodels.AuthViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -40,7 +39,7 @@ fun LoginPage(
     Scaffold(
         topBar = { TopAppBar(
             title = {
-                Text("Login"
+                Text("Your Name"
                 ) },
             navigationIcon = {
                 IconButton(onClick = { onBackPress() }) {
@@ -75,7 +74,9 @@ fun LoginPage(
                 MyButton(
                     text = "Save",
                     onClick = { authVM.setName(name); onBackPress() },
-                    modifier = Modifier.padding(top = 8.dp).fillMaxHeight()
+                    modifier = Modifier
+                        .padding(top = 8.dp)
+                        .fillMaxHeight()
                 )
 
             }

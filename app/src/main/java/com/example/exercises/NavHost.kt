@@ -11,7 +11,8 @@ import com.example.exercises.pages.Group
 import com.example.exercises.pages.HomePage
 import com.example.exercises.pages.LoginPage
 import com.example.exercises.pages.Profile
-import com.example.exercises.viewmodels.AuthViewModel
+import com.example.exercises.data.viewmodels.AuthViewModel
+import com.example.exercises.pages.NotesPage
 
 @Composable
 fun AppNavigation(modifier: Modifier = Modifier, navController: NavHostController){
@@ -30,6 +31,7 @@ fun AppNavigation(modifier: Modifier = Modifier, navController: NavHostControlle
                 onSoMePress = { navController.navigate(Routes.SOME) },
                 onCarsPress = { navController.navigate(Routes.CARS) },
                 onLoginPress = { navController.navigate(Routes.LOGIN) },
+                onNotesPress = { navController.navigate(Routes.NOTES) },
                 authVM = authVM
             )
         }
@@ -55,6 +57,13 @@ fun AppNavigation(modifier: Modifier = Modifier, navController: NavHostControlle
 
         composable(Routes.LOGIN) {
             LoginPage(
+                onBackPress = { navController.popBackStack() },
+                authVM = authVM
+            )
+        }
+
+        composable(Routes.NOTES){
+            NotesPage(
                 onBackPress = { navController.popBackStack() },
                 authVM = authVM
             )

@@ -8,30 +8,25 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.exercises.ui.theme.ExercisesTheme
 import com.example.exercises.ui.theme.MyButton
-import com.example.exercises.viewmodels.AuthViewModel
+import com.example.exercises.data.viewmodels.AuthViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -41,6 +36,7 @@ fun HomePage(
     onSoMePress: () -> Unit,
     onCarsPress: () -> Unit,
     onLoginPress: () -> Unit,
+    onNotesPress: () -> Unit,
     authVM: AuthViewModel
 ){
     Scaffold(
@@ -84,6 +80,9 @@ fun HomePage(
                 Button(onClick = onCarsPress) {
                     Text("Lec 3: REST API", style = MaterialTheme.typography.bodyLarge)
                 }
+                Button(onClick = onNotesPress) {
+                    Text("Lec 4: Firestore", style = MaterialTheme.typography.bodyLarge)
+                }
             }
 
         }
@@ -94,6 +93,6 @@ fun HomePage(
 @Composable
 fun HomePreview(){
     ExercisesTheme{
-        HomePage(onGroupPress = {}, onSoMePress = {}, onCarsPress = {}, onLoginPress = {}, authVM = viewModel())
+        HomePage(onGroupPress = {}, onSoMePress = {}, onCarsPress = {}, onLoginPress = {}, onNotesPress = {}, authVM = viewModel())
     }
 }

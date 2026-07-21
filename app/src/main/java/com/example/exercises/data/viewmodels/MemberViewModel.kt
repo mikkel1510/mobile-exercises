@@ -1,4 +1,4 @@
-package com.example.exercises.viewmodels
+package com.example.exercises.data.viewmodels
 
 import androidx.compose.runtime.mutableStateListOf
 import androidx.lifecycle.ViewModel
