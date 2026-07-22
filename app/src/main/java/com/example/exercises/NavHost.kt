@@ -12,7 +12,7 @@ import com.example.exercises.pages.HomePage
 import com.example.exercises.pages.LoginPage
 import com.example.exercises.pages.Profile
 import com.example.exercises.data.viewmodels.AuthViewModel
-import com.example.exercises.pages.NotesPage
+import com.example.exercises.pages.NoteScreen
 
 @Composable
 fun AppNavigation(modifier: Modifier = Modifier, navController: NavHostController){
@@ -63,9 +63,8 @@ fun AppNavigation(modifier: Modifier = Modifier, navController: NavHostControlle
         }
 
         composable(Routes.NOTES){
-            NotesPage(
+            NoteScreen(
                 onBackPress = { navController.popBackStack() },
-                authVM = authVM
             )
         }
     }
