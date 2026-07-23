@@ -24,4 +24,10 @@ class NoteRepository {
                 }
             }
     }
+
+    fun deleteNote(noteId: String){
+        db.collection("notes")
+            .document(noteId)
+            .delete()
+    }
 }

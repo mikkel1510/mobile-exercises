@@ -26,5 +26,9 @@ class NoteViewModel : ViewModel() {
         noteRepo.createNote(note)
     }
 
+    fun deleteNote(noteId: String){
+        noteRepo.deleteNote(noteId)
+    }
+
 
 }
