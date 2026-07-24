@@ -119,20 +119,35 @@ fun NoteContent(
             .background(MaterialTheme.colorScheme.background)
     ) {
         Text("Enter your name")
+        var authorBlank by remember { mutableStateOf(false) }
         var author by remember { mutableStateOf("") }
         MyTextField(
             value = author,
             onValueChange = { author = it },
-            label = "Author"
+            label = "Author",
+            border = if (authorBlank) Color.Red else null
         )
         Text("Enter your note")
         var note by remember { mutableStateOf("") }
+        var noteBlank by remember { mutableStateOf(false) }
         MyTextField(
             value = note,
             onValueChange = { note = it },
-            label = "Note"
+            label = "Note",
+            border = if (noteBlank) Color.Red else null
         )
-        MyButton(onClick = { createNote(author, note); author = ""; note = "" }, text = "Save")
+        MyButton(
+            onClick = {
+                authorBlank = author.isEmpty()
+                noteBlank = note.isEmpty()
+                if (!authorBlank && !noteBlank) {
+                    createNote(author, note)
+                    author = ""
+                    note = ""
+                    authorBlank = false
+                    noteBlank = false
+                }},
+            text = "Save")
         NotesList(notes, onDelete)
     }
 }

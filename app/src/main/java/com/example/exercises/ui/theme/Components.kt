@@ -9,6 +9,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
@@ -48,7 +49,8 @@ fun MyTextField(
     value: String,
     onValueChange: (String) -> Unit,
     label: String?,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    border: Color? = null
 ){
     OutlinedTextField(
         value = value,
@@ -56,12 +58,15 @@ fun MyTextField(
         modifier = modifier,
         textStyle = MaterialTheme.typography.bodyMedium,
         shape = RoundedCornerShape(16.dp),
-        colors = TextFieldDefaults.colors(
+        colors = OutlinedTextFieldDefaults.colors(
             focusedContainerColor = MaterialTheme.colorScheme.onPrimary,
             unfocusedContainerColor = MaterialTheme.colorScheme.background,
-            focusedLabelColor = MaterialTheme.colorScheme.primary,
-            unfocusedLabelColor = Color.Gray,
+            focusedLabelColor = border ?: MaterialTheme.colorScheme.primary,
+            unfocusedLabelColor = border ?: Color.Gray,
+            focusedBorderColor = border ?: MaterialTheme.colorScheme.primary,
+            unfocusedBorderColor = border ?: Color.Gray
         ),
+
         label = label?.let {
             {
                 Text(
@@ -90,7 +95,7 @@ fun FullPreview(){
             MyTextField(
                 value = query,
                 onValueChange = { query = it },
-                label = "Helloo",
+                label = "Helloo"
             )
         }
     }
