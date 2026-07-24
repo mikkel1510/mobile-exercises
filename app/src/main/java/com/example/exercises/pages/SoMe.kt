@@ -141,7 +141,7 @@ fun InfoBox(city: String, relationStatus: String, birthday: String, job: String)
     Column(
         Modifier
             .clip(RoundedCornerShape(20.dp))
-            .background(MaterialTheme.colorScheme.secondary)
+            .background(MaterialTheme.colorScheme.surface)
             .fillMaxWidth()
             .padding(15.dp),
         verticalArrangement = Arrangement.spacedBy(20.dp)

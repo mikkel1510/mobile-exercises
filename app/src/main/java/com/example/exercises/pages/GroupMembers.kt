@@ -111,7 +111,7 @@ fun Members(members: List<String>, onRemove: (Int) -> Unit){
                     .height(60.dp)
                     .fillMaxWidth()
                     .clip(MaterialTheme.shapes.medium)
-                    .background(Color.LightGray)
+                    .background(MaterialTheme.colorScheme.surface)
                     .padding(10.dp),
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically

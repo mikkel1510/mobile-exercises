@@ -56,7 +56,7 @@ fun HomePage(
             Row(
                 Modifier
                     .clip(MaterialTheme.shapes.medium)
-                    .background(MaterialTheme.colorScheme.secondary)
+                    .background(MaterialTheme.colorScheme.surface)
                     .fillMaxWidth()
                     .padding(12.dp),
                 horizontalArrangement = Arrangement.SpaceBetween,

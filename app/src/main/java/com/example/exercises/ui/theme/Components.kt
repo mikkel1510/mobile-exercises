@@ -59,10 +59,10 @@ fun MyTextField(
         textStyle = MaterialTheme.typography.bodyMedium,
         shape = RoundedCornerShape(16.dp),
         colors = OutlinedTextFieldDefaults.colors(
-            focusedContainerColor = MaterialTheme.colorScheme.onPrimary,
+            focusedContainerColor = MaterialTheme.colorScheme.background,
             unfocusedContainerColor = MaterialTheme.colorScheme.background,
-            focusedLabelColor = border ?: MaterialTheme.colorScheme.primary,
-            unfocusedLabelColor = border ?: Color.Gray,
+            focusedLabelColor = MaterialTheme.colorScheme.primary,
+            unfocusedLabelColor = Color.Gray,
             focusedBorderColor = border ?: MaterialTheme.colorScheme.primary,
             unfocusedBorderColor = border ?: Color.Gray
         ),
