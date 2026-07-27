@@ -80,4 +80,11 @@ val Typography = Typography(
         lineHeight = 18.sp,
         letterSpacing = 0.5.sp
     ),
+    labelLarge = TextStyle(
+        fontFamily = ExercisesFont,
+        fontWeight = FontWeight.Medium,
+        fontSize = 22.sp,
+        lineHeight = 22.sp,
+        letterSpacing = 0.5.sp
+    ),
 )

@@ -3,6 +3,7 @@ package com.example.exercises.ui.theme
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
@@ -33,13 +34,38 @@ fun MyButton(
             containerColor = color ?: MaterialTheme.colorScheme.primary,
             contentColor = MaterialTheme.colorScheme.onPrimary
         ),
-        shape = RoundedCornerShape(16.dp),
+        shape = Shapes.medium,
         modifier = modifier,
         enabled = enabled,
     ){
         Text(
             text = text,
             style = MaterialTheme.typography.labelMedium
+        )
+    }
+}
+
+@Composable
+fun MyBigButton(
+    text: String,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+    enabled: Boolean = true,
+    color: Color? = null,
+){
+    Button(
+        onClick = onClick,
+        colors = ButtonDefaults.buttonColors(
+            containerColor = color ?: MaterialTheme.colorScheme.primary,
+            contentColor = MaterialTheme.colorScheme.onPrimary
+        ),
+        shape = Shapes.large,
+        enabled = enabled,
+    ){
+        Text(
+            modifier = Modifier.padding(10.dp),
+            text = text,
+            style = MaterialTheme.typography.labelLarge
         )
     }
 }

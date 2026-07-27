@@ -5,8 +5,10 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -37,6 +39,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.exercises.data.model.Note
 import com.example.exercises.data.viewmodels.NoteViewModel
 import com.example.exercises.ui.theme.ExercisesTheme
+import com.example.exercises.ui.theme.MyBigButton
 import com.example.exercises.ui.theme.MyButton
 import com.example.exercises.ui.theme.MyTextField
 
@@ -79,24 +82,31 @@ fun NoteScreen(
                 Column(
                     Modifier
                         .fillMaxWidth()
-                        .padding(horizontal = 12.dp)
+                        .padding(12.dp),
+                    verticalArrangement = Arrangement.spacedBy(24.dp)
                 ) {
-                    Row() {
-                        Text("Delete note by ")
-                        Text(selectedNote!!.author, fontWeight = FontWeight.Bold)
-                        Text("?")
+                    Row(
+                        Modifier
+                            .fillMaxWidth(),
+                        horizontalArrangement = Arrangement.Center
+                    ) {
+                        Text("Delete note by ", style = MaterialTheme.typography.labelLarge)
+                        Text(selectedNote!!.author, fontWeight = FontWeight.Bold, style = MaterialTheme.typography.labelLarge)
+                        Text("?", style = MaterialTheme.typography.labelLarge)
                     }
                     Row(
-
+                        Modifier
+                            .fillMaxWidth(),
+                        horizontalArrangement = Arrangement.spacedBy(space = 12.dp, alignment = Alignment.CenterHorizontally)
                     ) {
-                        MyButton(
-                            text = "Calnce",
-                            onClick = { bottomSheetActive = false }
-                        )
-                        MyButton(
+                        MyBigButton(
                             text = "Delete",
                             onClick = { noteVM.deleteNote(selectedNote!!.id); bottomSheetActive = false },
                             color = Color.Red
+                        )
+                        MyBigButton(
+                            text = "Cancel",
+                            onClick = { bottomSheetActive = false }
                         )
 
                     }
